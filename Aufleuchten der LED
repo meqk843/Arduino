@@ -2,7 +2,7 @@
 #include <avr/io.h>
 #include <util/delay.h>
 
-//Aufleuchten der LED beim Schalten von DDB0 auf Masse
+//Aufleuchten der LED beim Schalten von DDB0 auf Masse 
 
 int main(void)
 {
