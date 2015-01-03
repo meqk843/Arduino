@@ -1,0 +1,25 @@
+#include <stdio.h>
+#include <avr/io.h>
+#include <util/delay.h>
+
+//Aufleuchten der LED beim Schalten von DDB0 auf Masse
+
+int main(void)
+{
+
+  DDRB |= (1<<DDB5); // DDB5 ist ein Ausgang, sonst Eingänge
+  PORTB |= (1<<DDB0); // DDB0 Eingang bekommt einen Pull Up Widerstand
+
+  while (1)
+  {
+	  if(!(PINB & (1<<PINB0))){ // Wenn DDB0 auf Masse und damit Abfrage = 0
+   PORTB |= (1<<DDB5); // Setzen des Pegels auf DDB5
+   _delay_ms(100);
+	  }
+	  else{
+   PORTB &= ~(1<<DDB5); // Sonst ein Null Pegel auf DDB5
+   _delay_ms(100);
+	  }
+  }
+  return 0; // never reached
+}
